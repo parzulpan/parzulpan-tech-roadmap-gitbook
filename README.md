@@ -1,2 +1,6 @@
-# Page 2
+---
+coverY: 0
+---
+
+# Java 基础
 
