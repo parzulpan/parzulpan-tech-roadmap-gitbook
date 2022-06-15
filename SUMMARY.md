@@ -4,9 +4,9 @@
 
 * [Page 2](README.md)
 
-## 计算机网络 <a href="#network" id="network"></a>
+## 计算机网络 <a href="#computer-network" id="computer-network"></a>
 
-* [Page 1](network/page-1.md)
+* [Page 1](computer-network/page-1.md)
 
 ## 操作系统 <a href="#operating-system" id="operating-system"></a>
 
