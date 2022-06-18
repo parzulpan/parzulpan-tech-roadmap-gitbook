@@ -1,18 +1,13 @@
 # README
 
-## Readme
+## 数据结构与算法
 
-欢迎来到潘潘的技术路线图，本系列将持续更新，作为 [parzulpan-tech-roadmap](https://github.com/parzulpan/parzulpan-tech-roadmap) 的 GitBook 备份仓库，欢迎关注！[在线阅读\~](https://roadmap.docs.parzulpan.cn/) :smile:
+> 在计算机科学中，数据结构是计算机中存储、组织数据的方式。正确的数据结构选择可以提高算法的效率。在计算机程序设计的过程中，选择适当的数据结构是一项重要工作。许多大型系统的编写经验显示，程序设计的困难程度与最终成果的质量与表现，取决于是否选择了最适合的数据结构。
+>
+> 在数学和计算机科学之中，算法是一个被定义好的、计算机可施行之指示的有限步骤或次序，常用于计算、数据处理和自动推理。作为一个有效方法，算法被用于计算函数，它包含了一系列定义清晰的指令，并可于有限的时间及空间内清楚的表述出来。
 
-主要分为以下六个子模块：
+不是专业选手，主要为了保持题感，以及为了面试，多多锻炼，百炼成钢。
 
-* [计算机基础](https://app.gitbook.com/s/oBK9PsvfGLB4hTnzJ4dZ/)
-* [后端开发](https://app.gitbook.com/s/epVgjoSIIqN15rlItGY3/)
-* [前端开发](https://app.gitbook.com/s/QLp0OqPSZYRe2iVclzdp/)
-* [大数据开发](https://app.gitbook.com/s/I6uxA1wVy11Uqq6jRnX4/)
-* [运维开发](https://app.gitbook.com/s/el9i25EdKkD5NRbFkEfK/)
-* [其他技能](https://app.gitbook.com/s/a2fW9n4KDlkXlQuxOKtF/)
+先快速了解常见的数据结构以及经典的算法思想，然后通过 ...，当然刷题网站必须是 LeetCode 了，语言主要使用 Java。
 
-思维导图一栏：
-
-致谢：
+###
