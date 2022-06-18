@@ -2,8 +2,6 @@
 
 [LeetCode](https://leetcode.cn/u/parzulpan/)，这玩意就像做数学题似的，在掌握基础知识和一些解题模板之后，刷就完事了\~ :tada:
 
-## 目录
-
 
 
 ### 2022.06.17
