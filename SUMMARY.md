@@ -1,8 +1,10 @@
 # Table of contents
 
+* [README](README.md)
+
 ## 数据结构和算法 <a href="#dsa" id="dsa"></a>
 
-* [README](README.md)
+* [README](dsa/readme.md)
 * [学一些基础知识](dsa/xue-yi-xie-ji-chu-zhi-shi.md)
 * [在实际中的应用](dsa/zai-shi-ji-zhong-de-ying-yong.md)
 * [算法训练营笔记](dsa/suan-fa-xun-lian-ying-bi-ji.md)
