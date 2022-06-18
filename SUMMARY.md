@@ -2,42 +2,27 @@
 
 * [README](README.md)
 
-## 编程语言 <a href="#programming-language" id="programming-language"></a>
+## 数据结构和算法 <a href="#dsa" id="dsa"></a>
 
-* [README](programming-language/readme.md)
-* [Java 基础](<README (1).md>)
-  * [Page 9](programming-language/java-ji-chu/page-9.md)
-* [Java 并发](programming-language/java-bing-fa/README.md)
-  * [Java 线程池和异步编排](programming-language/java-bing-fa/java-xian-cheng-chi-he-yi-bu-bian-pai.md)
-* [Java 集合](programming-language/java-ji-he/README.md)
-  * [Page 8](programming-language/java-ji-he/page-8.md)
-* [Java 虚拟机](programming-language/java-xu-ni-ji/README.md)
-  * [Page 10](programming-language/java-xu-ni-ji/page-10.md)
-* [Java NIO](programming-language/java-nio/README.md)
-  * [Page 11](programming-language/java-nio/page-11.md)
-* [Java 新特性](programming-language/java-xin-te-xing/README.md)
-  * [Page 12](programming-language/java-xin-te-xing/page-12.md)
+* [README](dsa/readme.md)
+* [学一些基础知识](dsa/xue-yi-xie-ji-chu-zhi-shi.md)
+* [在实际中的应用](dsa/zai-shi-ji-zhong-de-ying-yong.md)
+* [算法训练营笔记](dsa/suan-fa-xun-lian-ying-bi-ji.md)
+* [解题模板的总结](dsa/jie-ti-mo-ban-de-zong-jie.md)
+* [每日一题刷起来](dsa/mei-ri-yi-ti-shua-qi-lai.md)
 
-## 开发框架 <a href="#development-framework" id="development-framework"></a>
+## 计算机网络 <a href="#computer-network" id="computer-network"></a>
 
-* [README](development-framework/readme.md)
+* [README](computer-network/page-1.md)
 
-## 性能优化 <a href="#performance-optimization" id="performance-optimization"></a>
+## 操作系统 <a href="#operating-system" id="operating-system"></a>
 
-* [README](performance-optimization/readme.md)
+* [README](operating-system/page-3.md)
 
-## 分布式 <a href="#distributed" id="distributed"></a>
+## 设计模式 <a href="#design-patterns" id="design-patterns"></a>
 
-* [README](distributed/readme.md)
+* [README](design-patterns/page-4.md)
 
-## 微服务 <a href="#microservices" id="microservices"></a>
+## 数据库基础 <a href="#database-basics" id="database-basics"></a>
 
-* [README](microservices/readme.md)
-
-## 海量数据 <a href="#massive-data" id="massive-data"></a>
-
-* [README](massive-data/readme.md)
-
-## 系统架构 <a href="#system-structure" id="system-structure"></a>
-
-* [README](system-structure/readme.md)
+* [README](database-basics/page-5.md)
