@@ -13,7 +13,7 @@
 
 主要参考：
 
-* 书籍 《[Java并发编程实战](https://book.douban.com/subject/10484692/)》
+* 书籍《[Java并发编程实战](https://book.douban.com/subject/10484692/)》
 * 书籍《[深入理解Java虚拟机（第3版）](https://book.douban.com/subject/34907497/)》
 * 专栏《》
 * 视频《》
