@@ -9,10 +9,7 @@
 * MyBatis(Plus)
 * SpringDataJPA
 
-主要参考：
 
-* 书籍《》
-* 专栏《》
-* 视频《》
-* 文档《》
+
+主要参考：
 

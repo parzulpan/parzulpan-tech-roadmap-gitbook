@@ -15,6 +15,6 @@
 
 * 书籍《[Java并发编程实战](https://book.douban.com/subject/10484692/)》
 * 书籍《[深入理解Java虚拟机（第3版）](https://book.douban.com/subject/34907497/)》
-* 专栏《》
+* 专栏《[Netty 源码剖析与实战](https://time.geekbang.org/course/intro/100036701)》
 * 视频《》
-* 文档《》
+* 文档《[Modern Java - A Guide to Java 8](https://github.com/winterbe/java8-tutorial)》
