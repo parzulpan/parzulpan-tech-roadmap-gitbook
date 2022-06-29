@@ -4,6 +4,59 @@
 
 
 
+### 2022.06.28
+
+[**324. 摆动排序 II**](https://leetcode.cn/problems/wiggle-sort-ii/)
+
+> 给你一个整数数组 nums，将它重新排列成 nums\[0] < nums\[1] > nums\[2] < nums\[3]... 的顺序。
+>
+> 你可以假设所有输入数组都可以得到满足题目要求的结果。
+
+思路：
+
+
+
+编码：
+
+WiggleSort.java
+
+```java
+class Solution {
+    public void wiggleSort(int[] nums) {
+    }
+}
+```
+
+
+
+### 2022.06.27
+
+[**522. 最长特殊序列 II**](https://leetcode.cn/problems/longest-uncommon-subsequence-ii/)
+
+> 给定字符串列表 strs ，返回其中 最长的特殊序列 。如果最长特殊序列不存在，返回 -1 。
+>
+> 特殊序列 定义如下：该序列为某字符串 独有的子序列（即不能是其他字符串的子序列）。
+>
+> s 的 子序列可以通过删去字符串 s 中的某些字符实现。
+>
+> 例如，"abc" 是 "aebdc" 的子序列，因为您可以删除"aebdc"中的下划线字符来得到 "abc" 。"aebdc"的子序列还包括"aebdc"、 "aeb" 和 "" (空字符串)。
+
+思路：
+
+
+
+编码：
+
+FindLUSlength.java
+
+```java
+class Solution {
+    public int findLUSlength(String[] strs) {
+
+    }
+}
+```
+
 ### 2022.06.25
 
 [**剑指 Offer II 091. 粉刷房子**](https://leetcode.cn/problems/JEj789/)
