@@ -4,6 +4,77 @@
 
 
 
+
+
+### 2022.07.04
+
+[**1200. 最小绝对差**](https://leetcode.cn/problems/minimum-absolute-difference/)
+
+> 给你个整数数组 `arr`，其中每个元素都 **不相同**。
+>
+> 请你找到所有具有最小绝对差的元素对，并且按升序的顺序返回。
+
+思路：
+
+对 arr 进行升序排序，那么最小绝对差一定相邻，接下来进行比较，注意当遇到比当前小的时，主要清空之前的。
+
+编码：
+
+MinimumAbsDifference.java / Solution1200.java
+
+```java
+package cn.parulpan.code.questionoftheday;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+/**
+ * 1200. 最小绝对差
+ * https://leetcode.cn/problems/minimum-absolute-difference/
+ * <p>
+ * 数据结构: 数组
+ * 算法: 排序
+ *
+ * @author chengyan
+ * @since 2022/07/04
+ */
+public class Solution1200 {
+    public static void main(String[] args) {
+        System.out.println(new Solution1200().minimumAbsDifference(new int[]{4, 2, 1, 3}));
+        System.out.println(new Solution1200().minimumAbsDifference(new int[]{1, 3, 6, 10, 15}));
+        System.out.println(new Solution1200().minimumAbsDifference(new int[]{3, 8, -10, 23, 19, -4, -14, 27}));
+    }
+
+    public List<List<Integer>> minimumAbsDifference(int[] arr) {
+        int length = arr.length;
+        Arrays.sort(arr);
+
+        int best = Integer.MAX_VALUE;
+        List<List<Integer>> result = new ArrayList<>();
+        for (int i = 0; i < length - 1; i++) {
+            int temp = arr[i + 1] - arr[i];
+            if (temp < best) {
+                best = temp;
+                result.clear();
+                ArrayList<Integer> pair = new ArrayList<>();
+                pair.add(arr[i]);
+                pair.add(arr[i + 1]);
+                result.add(pair);
+            } else if (temp == best) {
+                ArrayList<Integer> pair = new ArrayList<>();
+                pair.add(arr[i]);
+                pair.add(arr[i + 1]);
+                result.add(pair);
+            }
+        }
+
+        return result;
+    }
+}
+
+```
+
 ### 2022.07.01
 
 [**241. 为运算表达式设计优先级**](https://leetcode.cn/problems/different-ways-to-add-parentheses/)
@@ -14,7 +85,7 @@
 
 思路：
 
-
+可以看作是一种分治的变形，把大问题划分为左右两个子问题，然后不断通过后序遍历的方式进行求解，求解过程中如果存在之前计算的子问题，则从 memMap 进行存取。
 
 编码：
 
@@ -105,8 +176,6 @@ public class Solution241 {
 }
 
 ```
-
-
 
 ### 2022.06.28
 
