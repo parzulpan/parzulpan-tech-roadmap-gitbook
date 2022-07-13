@@ -4,6 +4,81 @@
 
 
 
+
+
+### 2022.07.13
+
+[**735. 行星碰撞**](https://leetcode.cn/problems/asteroid-collision/)
+
+> 给定一个整数数组 asteroids，表示在同一行的行星。
+>
+> 对于数组中的每一个元素，其绝对值表示行星的大小，正负表示行星的移动方向（正表示向右移动，负表示向左移动）。每一颗行星以相同的速度移动。
+>
+> 找出碰撞后剩下的所有行星。碰撞规则：两个行星相互碰撞，较小的行星会爆炸。如果两颗行星大小相同，则两颗行星都会爆炸。两颗移动方向相同的行星，永远不会发生碰撞。
+
+**思路**：
+
+利用栈，进行规则判断当前行星是否存活，以及栈顶行星是否爆炸，如果存活则加入栈顶。
+
+**编码**：
+
+AsteroidCollision.java / Solution735.java
+
+```java
+package cn.parulpan.code.questionoftheday;
+
+import java.util.ArrayDeque;
+import java.util.Arrays;
+
+/**
+ * 735. 行星碰撞
+ * https://leetcode.cn/problems/asteroid-collision/
+ * <p>
+ * data structure: 数组 栈
+ * algorithm: 模拟
+ *
+ * @author parzulpan
+ * @since 2022/07/13
+ */
+public class Solution735 {
+    public static void main(String[] args) {
+        System.out.println(Arrays.toString(new Solution735().asteroidCollision(new int[]{5, 10, -5})));
+        System.out.println(Arrays.toString(new Solution735().asteroidCollision(new int[]{8, -8})));
+        System.out.println(Arrays.toString(new Solution735().asteroidCollision(new int[]{10, 2, -5})));
+    }
+
+    public int[] asteroidCollision(int[] asteroids) {
+        ArrayDeque<Integer> deque = new ArrayDeque<>();
+        for (int asteroid : asteroids) {
+            // 当前行星是否存活
+            boolean live = true;
+
+            while (live && !deque.isEmpty() && deque.peekLast() > 0 && asteroid < 0) {
+                int peekLast = deque.peekLast();
+                live = peekLast < -asteroid;
+                // 栈顶行星爆炸
+                if (peekLast <= -asteroid) {
+                    deque.pollLast();
+                }
+            }
+
+            // 当前行星存活则加入栈
+            if (live) {
+                deque.addLast(asteroid);
+            }
+        }
+
+        int size = deque.size();
+        int[] ans = new int[size];
+        while (!deque.isEmpty()) {
+            ans[--size] = deque.pollLast();
+        }
+
+        return ans;
+    }
+}
+```
+
 ### 2022.07.11
 
 [**676. 实现一个魔法字典**](https://leetcode.cn/problems/implement-magic-dictionary/)
