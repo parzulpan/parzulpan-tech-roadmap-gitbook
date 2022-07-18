@@ -48,7 +48,7 @@ package cn.parulpan.code.datastructure;
  * Trie 树（又叫「前缀树」或「字典树」）是一种用于快速查询「某个字符串/字符前缀」是否存在的数据结构。
  * 其核心是使用「边」来代表有无字符，使用「点」来记录是否为「单词结尾」以及「其后续字符串的字符是什么」。
  *
- * @author chengyan
+ * @author parzulpan
  * @since 2022/07/14
  */
 public class Solution208 {
