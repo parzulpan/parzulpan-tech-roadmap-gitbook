@@ -4,6 +4,84 @@
 
 
 
+### 2022.07.24
+
+[**1184. 公交站间的距离**](https://leetcode.cn/problems/distance-between-bus-stops/)
+
+> 环形公交路线上有 n 个站，按次序从 0 到 n - 1 进行编号。我们已知每一对相邻公交站之间的距离，distance\[i] 表示编号为 i 的车站和编号为 (i + 1) % n 的车站之间的距离。
+>
+> 环线上的公交车都可以按顺时针和逆时针的方向行驶。
+>
+> 返回乘客从出发点 start 到目的地 destination 之间的最短距离。
+
+**思路：**
+
+根据题意进行模拟，用 before 和 after 分别代表向前和往后走两种方式，用 beforeV 和 afterV 记录两种方式的结果，然后求最小值即可**。**
+
+**编码：**
+
+```java
+package cn.parulpan.code.questionoftheday;
+
+/**
+ * 1184. 公交站间的距离
+ * https://leetcode.cn/problems/distance-between-bus-stops/
+ * <p>
+ * data structure: 数组
+ * algorithm: 模拟
+ *
+ * @author parzulpan
+ * @since 2022/07/24
+ */
+public class Solution1184 {
+    public static void main(String[] args) {
+        System.out.println(new Solution1184().distanceBetweenBusStops(new int[]{1, 2, 3, 4}, 0, 1));
+        System.out.println(new Solution1184().distanceBetweenBusStops(new int[]{1, 2, 3, 4}, 0, 2));
+        System.out.println(new Solution1184().distanceBetweenBusStops(new int[]{1, 2, 3, 4}, 0, 3));
+    }
+
+    public int distanceBetweenBusStops(int[] distance, int start, int destination) {
+        int length = distance.length;
+        int before = start, after = start, beforeV = 0, afterV = 0;
+
+        while (before != destination) {
+            beforeV += distance[before];
+            if (++before == length) {
+                before = 0;
+            }
+        }
+        while (after != destination) {
+            if (--after < 0) {
+                after = length - 1;
+            }
+            afterV += distance[after];
+        }
+
+        return Math.min(beforeV, afterV);
+    }
+}
+
+```
+
+### 2022.07.21
+
+[**814. 二叉树剪枝**](https://leetcode.cn/problems/binary-tree-pruning/)
+
+> 给你二叉树的根结点 root ，此外树的每个结点的值要么是 0 ，要么是 1 。
+>
+> 返回移除了所有不包含 1 的子树的原二叉树。
+>
+> 节点 node 的子树为 node 本身加上所有 node 的后代。
+
+**思路：**
+
+****
+
+**编码：**
+
+```java
+```
+
 ### 2022.07.18
 
 [**749. 隔离病毒**](https://leetcode.cn/problems/contain-virus/)
