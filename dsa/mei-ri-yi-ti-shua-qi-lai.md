@@ -4,7 +4,73 @@
 
 
 
+### 2022.08.08
 
+[**761. 特殊的二进制序列**](https://leetcode.cn/problems/special-binary-string/)
+
+> 特殊的二进制序列是具有以下两个性质的二进制序列：
+>
+> * 0 的数量与 1 的数量相等。&#x20;
+> * 二进制序列的每一个前缀码中 1 的数量要大于等于 0 的数量。
+>
+> &#x20;给定一个特殊的二进制序列 S，以字符串形式表示。定义一个操作 为首先选择 S 的两个连续且非空的特殊的子串，然后将它们交换。（两个子串为连续的当且仅当第一个子串的最后一个字符恰好为第二个子串的第一个字符的前一个字符。)
+>
+> 在任意次数的操作之后，交换后的字符串按照字典序排列的最大的结果是什么？
+
+**思路：**
+
+我的建议是开摆！
+
+**编码：**
+
+```java
+package cn.parulpan.code.questionoftheday;
+
+import java.util.ArrayList;
+
+/**
+ * 761. 特殊的二进制序列
+ * https://leetcode.cn/problems/special-binary-string/
+ * <p>
+ * data structure: 字符串
+ * algorithm: 递归
+ *
+ * @author parzulpan
+ * @since 2022/08/08
+ */
+public class Solution761 {
+    public static void main(String[] args) {
+        System.out.println(new Solution761().makeLargestSpecial("11011000"));
+    }
+
+    /**
+     * 我的建议是开摆
+     */
+    public String makeLargestSpecial(String s) {
+        if (s.length() == 0) {
+            return s;
+        }
+
+        ArrayList<String> list = new ArrayList<>();
+        char[] chars = s.toCharArray();
+        for (int i = 0, j = 0, k = 0; i < chars.length; i++) {
+            k += chars[i] == '1' ? 1 : -1;
+            if (k == 0) {
+                list.add("1" + makeLargestSpecial(s.substring(j + 1, i)) + "0");
+                j = i + 1;
+            }
+        }
+        list.sort((a, b) -> (b + a).compareTo(a + b));
+        StringBuilder sb = new StringBuilder();
+        for (String s1 : list) {
+            sb.append(s1);
+        }
+
+        return sb.toString();
+    }
+}
+
+```
 
 ### 2022.08.06
 
