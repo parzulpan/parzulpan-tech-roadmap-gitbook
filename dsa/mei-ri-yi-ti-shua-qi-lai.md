@@ -4,6 +4,146 @@
 
 
 
+### 2022.08.10
+
+[**640. 求解方程**](https://leetcode.cn/problems/solve-the-equation/)
+
+> 求解一个给定的方程，将x以字符串 "x=#value" 的形式返回。该方程仅包含 '+' ， '-' 操作，变量 x 和其对应系数。
+>
+> 如果方程没有解，请返回 "No solution" 。如果方程有无限解，则返回 “Infinite solutions” 。
+>
+> 题目保证，如果方程中只有一个解，则 'x' 的值是一个整数。
+
+**思路：**
+
+先按 “=” 分割为左右两边, 然后把 "-" 替换成 "+-", 然后再按 "+" 分割, 最后再移项和合并同类项即可, 注意 "x" 和 "-x" 的特殊处理
+
+**编码：**
+
+```java
+package cn.parulpan.code.questionoftheday;
+
+/**
+ * 640. 求解方程
+ * https://leetcode.cn/problems/solve-the-equation/
+ * <p>
+ * data structure: 字符串
+ * algorithm: 数学 模拟
+ *
+ * @author parzulpan
+ * @since 2022/08/10
+ */
+public class Solution640 {
+    public static void main(String[] args) {
+        System.out.println(new Solution640().solveEquation("x+5-3+x=6+x-2"));
+        System.out.println(new Solution640().solveEquation("x=x"));
+        System.out.println(new Solution640().solveEquation("2x=x"));
+    }
+
+    /**
+     * 先按 “=” 分割为左右两边, 然后把 "-" 替换成 "+-", 然后再按 "+" 分割, 最后再移项和合并同类项即可, 注意 "x" 和 "-x" 的特殊处理
+     */
+    public String solveEquation(String equation) {
+        // 把 x 移到左边, 把其他移到右边
+        String[] arr = equation.split("=");
+        int left = 0, right = 0;
+        String[] arrL = arr[0].replace("-", "+-").split("\\+");
+        String[] arrR = arr[1].replace("-", "+-").split("\\+");
+
+        // 等式左边处理
+        for (String s : arrL) {
+            if ("x".equals(s)) {
+                left += 1;
+            } else if ("-x".equals(s)) {
+                left += -1;
+            } else if (s.contains("x")) {
+                left += Integer.parseInt(s.substring(0, s.length() - 1));
+            } else if (!"".equals(s)) {
+                right -= Integer.parseInt(s);
+            }
+        }
+
+        // 等式右边处理
+        for (String s : arrR) {
+            if ("x".equals(s)) {
+                left -= 1;
+            } else if ("-x".equals(s)) {
+                left -= -1;
+            } else if (s.contains("x")) {
+                left -= Integer.parseInt(s.substring(0, s.length() - 1));
+            } else if (!"".equals(s)) {
+                right += Integer.parseInt(s);
+            }
+        }
+
+        // 结果处理
+        if (left == 0) {
+            if (right == 0) {
+                return "Infinite solutions";
+            } else {
+                return "No solution";
+            }
+        } else {
+            return "x=" + right / left;
+        }
+    }
+}
+
+```
+
+### 2022.08.09
+
+[**1413. 逐步求和得到正数的最小值**](https://leetcode.cn/problems/minimum-value-to-get-positive-step-by-step-sum/)
+
+> 给你一个整数数组 nums 。你可以选定任意的 正数 startValue 作为初始值。
+>
+> 你需要从左到右遍历 nums 数组，并将 startValue 依次累加上 nums 数组中的值。
+>
+> 请你在确保累加和始终大于等于 1 的前提下，选出一个最小的 正数 作为 startValue 。
+
+**思路：**
+
+因为需要累加和 满足 sum + startValue >= 1, 那么需要累加和最小值 sumMin 满足 sumMin + startValue > = 1, 那么 startValue 的最小值就是 1 - sumMin
+
+**编码：**
+
+```java
+package cn.parulpan.code.questionoftheday;
+
+/**
+ * 1413. 逐步求和得到正数的最小值
+ * https://leetcode.cn/problems/minimum-value-to-get-positive-step-by-step-sum/
+ * <p>
+ * data structure: 数组
+ * algorithm: 前缀和 贪心
+ *
+ * @author parzulpan
+ * @since 2022/08/09
+ */
+public class Solution1413 {
+    public static void main(String[] args) {
+        System.out.println(new Solution1413().minStartValue(new int[]{-3, 2, -3, 4, 2}));
+        System.out.println(new Solution1413().minStartValue(new int[]{1, 2}));
+        System.out.println(new Solution1413().minStartValue(new int[]{1, -2, -3}));
+    }
+
+    /**
+     * 因为需要累加和 满足 sum + startValue >= 1, 那么需要累加和最小值 sumMin 满足 sumMin + startValue > = 1,
+     * 那么 startValue 的最小值就是 1 - sumMin
+     */
+    public int minStartValue(int[] nums) {
+        int sum = 0, sumMin = 0;
+        for (int num : nums) {
+            sum += num;
+            sumMin = Math.min(sum, sumMin);
+        }
+
+        return 1 - sumMin;
+    }
+}
+
+```
+
 ### 2022.08.08
 
 [**761. 特殊的二进制序列**](https://leetcode.cn/problems/special-binary-string/)
