@@ -6,6 +6,162 @@
 
 
 
+### 2022.09.10
+
+[**669. 修剪二叉搜索树**](https://leetcode.cn/problems/trim-a-binary-search-tree/)
+
+> 给你二叉搜索树的根节点 root ，同时给定最小边界low 和最大边界 high。通过修剪二叉搜索树，使得所有节点的值在\[low, high]中。修剪树 不应该 改变保留在树中的元素的相对结构 (即，如果没有被移除，原有的父代子代关系都应当保留)。 可以证明，存在 唯一的答案 。
+>
+> 所以结果应当返回修剪好的二叉搜索树的新的根节点。注意，根节点可能会根据给定的边界发生改变。
+
+**思路：**
+
+递归处理.&#x20;
+
+1\. 若 root.val < low, 则 root 的左子树必然均小于边界值, 所以递归处理 root 的右子树即可;&#x20;
+
+&#x20;2\. 若 root.val > high, 则 root 的右子树必然均大于边界值, 所以递归处理 root 的左子树即可;&#x20;
+
+&#x20;3\. 若 root.val 满足要求, 则 root 继续保留, 递归处理左右子树即可;
+
+**编码：**
+
+```java
+package cn.parulpan.code.questionoftheday;
+
+import cn.parulpan.code.common.TreeNode;
+
+/**
+ * 669. 修剪二叉搜索树
+ * https://leetcode.cn/problems/trim-a-binary-search-tree/
+ * <p>
+ * data structure: 树 二叉树 二叉搜索树
+ * algorithm: 递归
+ *
+ * @author parzulpan
+ * @since 2022/9/10
+ */
+public class Solution669 {
+    public static void main(String[] args) {
+        TreeNode node1 = new TreeNode(3);
+        TreeNode node2 = new TreeNode(0);
+        TreeNode node3 = new TreeNode(4);
+        TreeNode node4 = new TreeNode(2);
+        TreeNode node5 = new TreeNode(1);
+        node1.left = node2;
+        node1.right = node3;
+        node2.left = null;
+        node2.right = node4;
+        node3.left = null;
+        node3.right = null;
+        node4.left = node5;
+        node4.right = null;
+        node5.left = null;
+        node5.right = null;
+        System.out.println(node1);
+        new Solution669().trimBST(node1, 1,3);
+        System.out.println(node1);
+    }
+
+    /**
+     * 递归处理.
+     * 1. 若 root.val < low, 则 root 的左子树必然均小于边界值, 所以递归处理 root 的右子树即可;
+     * 2. 若 root.val > high, 则 root 的右子树必然均大于边界值, 所以递归处理 root 的左子树即可;
+     * 3. 若 root.val 满足要求, 则 root 继续保留, 递归处理左右子树即可;
+     */
+    public TreeNode trimBST(TreeNode root, int low, int high) {
+        if (root == null) {
+            return null;
+        }
+
+        if (root.val < low) {
+            return trimBST(root.right, low, high);
+        }
+
+        if (root.val > high) {
+            return trimBST(root.left, low, high);
+        }
+
+        root.left = trimBST(root.left, low, high);
+        root.right = trimBST(root.right, low, high);
+
+        return root;
+    }
+}
+
+```
+
+### 2022.08.12
+
+[**1282. 用户分组**](https://leetcode.cn/problems/group-the-people-given-the-group-size-they-belong-to/)
+
+> 有 n 个人被分成数量未知的组。每个人都被标记为一个从 0 到 n - 1 的唯一ID 。
+>
+> 给定一个整数数组 groupSizes ，其中 groupSizes\[i] 是第 i 个人所在的组的大小。例如，如果 groupSizes\[1] = 3 ，则第 1 个人必须位于大小为 3 的组中。
+>
+> 返回一个组列表，使每个人 i 都在一个大小为 groupSizes\[i] 的组中。
+>
+> 每个人应该 恰好只 出现在 一个组 中，并且每个人必须在一个组中。如果有多个答案，返回其中 任何 一个。可以 保证 给定输入 至少有一个 有效的解。
+
+**思路：**
+
+可以使用哈希表将所属组大小相同的下标放到一起. 假设组大小为 k 的元素有 m 个, 然后我们再将这 m 个元素按照 k 个一组进行划分即可.
+
+**编码：**
+
+```java
+package cn.parulpan.code.questionoftheday;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+/**
+ * 1282. 用户分组
+ * https://leetcode.cn/problems/group-the-people-given-the-group-size-they-belong-to/
+ * <p>
+ * data structure: 字符串 哈希
+ * algorithm: 模拟
+ *
+ * @author parzulpan
+ * @since 2022/08/12
+ */
+public class Solution1282 {
+    public static void main(String[] args) {
+        System.out.println(new Solution1282().groupThePeople(new int[]{3, 3, 3, 3, 3, 1, 3}));
+        System.out.println(new Solution1282().groupThePeople(new int[]{2, 1, 3, 3, 3, 2}));
+    }
+
+    /**
+     * 可以使用哈希表将所属组大小相同的下标放到一起. 假设组大小为 k 的元素有 m 个, 然后我们再将这 m 个元素按照 k 个一组进行划分即可.
+     */
+    public List<List<Integer>> groupThePeople(int[] groupSizes) {
+        HashMap<Integer, List<Integer>> map = new HashMap<>(500);
+        for (int i = 0; i < groupSizes.length; i++) {
+            List<Integer> list = map.getOrDefault(groupSizes[i], new ArrayList<>());
+            list.add(i);
+            map.put(groupSizes[i], list);
+        }
+
+        ArrayList<List<Integer>> ans = new ArrayList<>();
+        for (Integer k : map.keySet()) {
+            List<Integer> list = map.get(k);
+            ArrayList<Integer> cur = new ArrayList<>();
+            for (Integer integer : list) {
+                cur.add(integer);
+                if (cur.size() == k) {
+                    ans.add(cur);
+                    cur = new ArrayList<>();
+                }
+            }
+        }
+
+        return ans;
+    }
+}
+
+```
+
 ### 2022.08.11
 
 [**1417. 重新格式化字符串**](https://leetcode.cn/problems/reformat-the-string/)
