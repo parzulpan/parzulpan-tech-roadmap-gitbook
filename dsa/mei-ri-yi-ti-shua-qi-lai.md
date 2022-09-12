@@ -4,7 +4,79 @@
 
 
 
+### 2022.09.12
 
+[**1608. 特殊数组的特征值**](https://leetcode.cn/problems/special-array-with-x-elements-greater-than-or-equal-x/)
+
+> 给你一个非负整数数组 nums 。如果存在一个数 x ，使得 nums 中恰好有 x 个元素 大于或者等于 x ，那么就称 nums 是一个 特殊数组 ，而 x 是该数组的 特征值 。
+>
+> 注意： x 不必 是 nums 的中的元素。
+>
+> 如果数组 nums 是一个 特殊数组 ，请返回它的特征值 x 。否则，返回 -1 。可以证明的是，如果 nums 是特殊数组，那么其特征值 x 是 唯一的 。
+
+**思路：**
+
+可以通过枚举的方式找到 x，而对于每个 x 的合法性检查，我们需要快速知道 nums 中比 x 大的数的个数，这可以通过先排序然后二分查找。
+
+**编码：**
+
+```java
+package cn.parulpan.code.questionoftheday;
+
+import java.util.Arrays;
+
+/**
+ * 1608. 特殊数组的特征值
+ * https://leetcode.cn/problems/special-array-with-x-elements-greater-than-or-equal-x/
+ * <p>
+ * data structure: 数组
+ * algorithm: 排序 二分查找
+ *
+ * @author parzulpan
+ * @since 2022/09/12
+ */
+public class Solution1608 {
+    public static void main(String[] args) {
+        Solution1608 solution1608 = new Solution1608();
+        System.out.println(solution1608.specialArray(new int[]{3, 5}));
+        System.out.println(solution1608.specialArray(new int[]{0, 0}));
+        System.out.println(solution1608.specialArray(new int[]{0, 4, 3, 0, 4}));
+        System.out.println(solution1608.specialArray(new int[]{3, 6, 7, 7, 0}));
+    }
+
+    /**
+     * 1 <= nums.length <= 100
+     * 0 <= nums[i] <= 1000
+     */
+    public static int X_MAX = 1001;
+
+    /**
+     * 可以通过枚举的方式找到 x，而对于每个 x 的合法性检查，我们需要快速知道 nums 中比 x 大的数的个数，这可以通过先排序然后二分查找。
+     */
+    public int specialArray(int[] nums) {
+        Arrays.sort(nums);
+        int length = nums.length;
+        for (int x = 0; x < X_MAX; x++) {
+            // 二分查找
+            int left = 0, right = length - 1;
+            while (left < right) {
+                int mid = left + right >> 1;
+                if (nums[mid] >= x) {
+                    right = mid;
+                } else {
+                    left = mid + 1;
+                }
+            }
+            // 元素大于或者等于 x 并且 x 等于其数量
+            if (nums[right] >= x && x == length - left) {
+                return x;
+            }
+        }
+        return -1;
+    }
+}
+
+```
 
 ### 2022.09.10
 
@@ -20,9 +92,9 @@
 
 1\. 若 root.val < low, 则 root 的左子树必然均小于边界值, 所以递归处理 root 的右子树即可;&#x20;
 
-&#x20;2\. 若 root.val > high, 则 root 的右子树必然均大于边界值, 所以递归处理 root 的左子树即可;&#x20;
+2\. 若 root.val > high, 则 root 的右子树必然均大于边界值, 所以递归处理 root 的左子树即可;&#x20;
 
-&#x20;3\. 若 root.val 满足要求, 则 root 继续保留, 递归处理左右子树即可;
+3\. 若 root.val 满足要求, 则 root 继续保留, 递归处理左右子树即可;
 
 **编码：**
 
